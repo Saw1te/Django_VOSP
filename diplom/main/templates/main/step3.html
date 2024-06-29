@@ -1,0 +1,26 @@
+{% extends 'main/all.html' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Система автоматизированного выбора оптического кабеля и оборудования для проектирования ВОСП</h1>
+                <h2> Входные параметры для выбора усилителя: </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form method="POST">
+                    <div class="form_v">
+                        {% csrf_token %}<p>Выходная мощность, дБм</p>
+                        {{ form.output_power }}<p>Коэффициент усиления, дБ</p>
+                        {{ form.gain_factor }}<p>Коэффициент шума, дБ</p>
+                        {{ form.noise_factor }}<p></p>
+                        <span>{{ error }}</span>
+                        <button type="submit" class="btn_red" name="submit"> Результат </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'main/all.html' %}
+{% load static %}
+{% block body %}
+    <h1>Система автоматизированного выбора оптического кабеля и оборудования для проектирования ВОСП</h1>
+    <h3>Кабель подходящий по вашим параметрам: </h3>
+    <img src="{% static 'main/img/'%}{{name_1}}.png" alt="Фото1" width="600" height="120"><br>
+    {% for key, value in step_1.items %}
+        <h2>Название кабеля: {{ key }}</h2>
+        {% with value.0 as u %}
+            <p>Тип прокладки кабеля: {{ u }}</p>
+        {% endwith %}
+        {% with value.1 as u %}
+            <p>Кол-во ОВ в кабеле, до: {{ u }}</p>
+        {% endwith %}
+        {% with value.2 as u %}
+            <p>Диаметр кабеля, мм: {{ u }}</p>
+        {% endwith %}
+        {% with value.3 as u %}
+            <p>Рабочая длина волны, нм: {{ u }}</p>
+        {% endwith %}
+        {% with value.4 as u %}
+            <p>Коэффициент затухания, дБ/км, не более: {{ u }}</p>
+        {% endwith %}
+    {% endfor %}
+    <h3>Мультиплексор/демультиплексор подходящий по вашим параметрам: </h3>
+    <img src="{% static 'main/img/'%}{{name_2}}.jpg" alt="Фото2" width="400" height="200"><br>
+    {% for key, value in step_2.items %}
+        <h2>Мультиплексор/демультиплексор: {{ key }}</h2>
+        {% with value.0 as u %}
+            <p>Количество волокон: {{ u }}</p>
+        {% endwith %}
+        {% with value.1 as u %}
+            <p>Количество каналов: {{ u }}</p>
+        {% endwith %}
+        {% with value.2 as u %}
+            <p>Максимальные вносимые затухания, дБ: {{ u }}</p>
+        {% endwith %}
+    {% endfor %}
+    <h3>Усилитель подходящий по вашим параметрам: </h3>
+    <img src="{% static 'main/img/'%}{{name_3}}.jpg" alt="Фото3" width="400" height="200"><br>
+    {% for key, value in step_3.items %}
+        <h2>Усилитель: {{ key }}</h2>
+        {% with value.0 as u %}
+            <p>Выходная мощность, дБм: {{ u }}</p>
+        {% endwith %}
+        {% with value.1 as u %}
+            <p>Коэффициент усиления, дБ: {{ u }}</p>
+        {% endwith %}
+        {% with value.2 as u %}
+            <p>Коэффициент шума, дБ: {{ u }}</p>
+        {% endwith %}
+    {% endfor %}
+{% endblock %}

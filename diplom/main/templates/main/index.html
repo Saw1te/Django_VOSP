@@ -1,0 +1,28 @@
+{% extends 'main/all.html' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Система автоматизированного выбора оптического кабеля и оборудования для проектирования ВОСП</h1>
+                <h2> Входные параметры для выбора кабеля: </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form method="POST">
+                    <div class="form_v">
+                        {% csrf_token %}<p>Тип прокладки кабеля</p>
+                        {{ form.type_fibers }}<p>Кол-во ОВ в кабеле, до</p>
+                        {{ form.count_fibers }}<p>Диаметр сердцевины, мкм</p>
+                        {{ form.fading }}<p>Рабочая длина волны, нм</p>
+                        {{ form.dispersion }}<p>Коэффициент затухания, дБ/км, не более</p>
+                        {{ form.diameter }}<p></p>
+                        <span>{{ error }}</span>
+                        <button type="submit" class="btn_red" name="submit"> Продолжить </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
